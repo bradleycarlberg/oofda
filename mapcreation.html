@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Layer Swipe</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
-	<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script src="https://openlayers.org/en/v4.2.0/build/ol.js"></script>
+    <title>oofda</title>
+    <link rel="stylesheet" href="../css/ol-4.2.0.css" type="text/css">
+    <script src="../js/ol-4.2.0.js"></script>
   </head>
   <body>
     <div id="map" class="map" style="width: 80%"></div>
+	<div id="legend" class="legend" style="width: 20%"></div>
     <input id="swipe" type="range" style="width: 100%">
     <script>
+
+      // FLOOD EVENT PARAMETERS
+      var centerLonLat = [-91.1403, 30.4583]; 
+      var initialZoom = 10;
+      var zoomExtent = [10, 17];
+
+      // END PARAMETERS
+
       var osm = new ol.layer.Tile({
         source: new ol.source.OSM()
       });
-      var bing = new ol.layer.Tile({
-        source: new ol.source.BingMaps({
-          key: 'Your Bing Maps Key from http://www.bingmapsportal.com/ here',
-          imagerySet: 'Aerial'
-        })
-      });
 
       var map = new ol.Map({
-        layers: [osm, bing],
+        layers: [osm],
         target: 'map',
         controls: ol.control.defaults({
           attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
@@ -30,16 +31,16 @@
           })
         }),
         view: new ol.View({
-          center: ol.proj.fromLonLat([-91.1403, 30.4583] ),
-          zoom: 10,
-	  minZoom: 10,
-          maxZoom: 17
+          center: ol.proj.fromLonLat(centerLonLat),
+          zoom: initialZoom,
+	      minZoom: zoomExtent[0],
+          maxZoom: zoomExtent[1]
         })
       });
 
       var swipe = document.getElementById('swipe');
 
-      bing.on('precompose', function(event) {
+      osm.on('precompose', function(event) {
         var ctx = event.context;
         var width = ctx.canvas.width * (swipe.value / 100);
 
@@ -49,7 +50,7 @@
         ctx.clip();
       });
 
-      bing.on('postcompose', function(event) {
+      osm.on('postcompose', function(event) {
         var ctx = event.context;
         ctx.restore();
       });
