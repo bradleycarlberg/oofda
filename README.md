@@ -1,4 +1,4 @@
 # oofda
 CUAHSI SI Institute
 
-map address: https://bradleycarlberg.github.io/oofda/
+map address: https://bradleycarlberg.github.io/oofda/mapcreation.html
