@@ -3,61 +3,23 @@
   <head>
     <title>oofda</title>
     <link rel="stylesheet" href="css/ol-4.2.0.css" type="text/css">
+    <link rel="stylesheet" href="css/oofda.css" type="text/css">
     <script src="js/ol-4.2.0.js"></script>
+	<script src="js/map.js"></script>
   </head>
   <body>
-    <div id="map" class="map" style="width: 80%"></div>
-	<div id="legend" class="legend" style="width: 20%"></div>
-    <input id="swipe" type="range" style="width: 100%">
-    <script>
+    <div id="map" class="map"></div>
+	<div id="legend" class="legend"></div>
+    <input id="swipe" type="range" />
 
+    <script>
       // FLOOD EVENT PARAMETERS
       var centerLonLat = [-91.1403, 30.4583]; 
       var initialZoom = 10;
       var zoomExtent = [10, 17];
-
       // END PARAMETERS
 
-      var osm = new ol.layer.Tile({
-        source: new ol.source.OSM()
-      });
-
-      var map = new ol.Map({
-        layers: [osm],
-        target: 'map',
-        controls: ol.control.defaults({
-          attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
-            collapsible: false
-          })
-        }),
-        view: new ol.View({
-          center: ol.proj.fromLonLat(centerLonLat),
-          zoom: initialZoom,
-	      minZoom: zoomExtent[0],
-          maxZoom: zoomExtent[1]
-        })
-      });
-
-      var swipe = document.getElementById('swipe');
-
-      osm.on('precompose', function(event) {
-        var ctx = event.context;
-        var width = ctx.canvas.width * (swipe.value / 100);
-
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
-        ctx.clip();
-      });
-
-      osm.on('postcompose', function(event) {
-        var ctx = event.context;
-        ctx.restore();
-      });
-
-      swipe.addEventListener('input', function() {
-        map.render();
-      }, false);
+      initMap(centerLonLat, initialZoom, zoomExtent);
     </script>
   </body>
 </html>
