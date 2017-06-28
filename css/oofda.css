@@ -1,0 +1,13 @@
+#map {
+	width: 80%;
+}
+
+#legend {
+	width: 20%;
+    height: 100%;
+	float: right;
+}
+
+#swipe {
+	width: 100%;
+}
