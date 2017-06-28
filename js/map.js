@@ -25,26 +25,6 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
     })
   });
   
-  var swipe = document.getElementById('swipe');
-  
-  osm.on('precompose', function(event) {
-    var ctx = event.context;
-    var width = ctx.canvas.width * (swipe.value / 100);
-  
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
-    ctx.clip();
-  });
-  
-  osm.on('postcompose', function(event) {
-    var ctx = event.context;
-    ctx.restore();
-  });
-  
-  swipe.addEventListener('input', function() {
-    map.render();
-  }, false);
 }
 
 function addLayer(url, title) {
@@ -58,6 +38,7 @@ function addLayer(url, title) {
     });
 	map.addLayer(vectorLayer);
     addToLegend(title, vectorLayer);
+	enableSwipe(vectorLayer);
   });
 }
 
@@ -69,4 +50,28 @@ function addToLegend(title, layer) {
   });
 
   $('#legend').append(legendItem);
+}
+
+function enableSwipe(layer) {
+  var swipe = document.getElementById('swipe');
+  
+  layer.on('precompose', function(event) {
+    var ctx = event.context;
+    var width = ctx.canvas.width * (swipe.value / 100);
+  
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
+    ctx.clip();
+  });
+  
+  layer.on('postcompose', function(event) {
+    var ctx = event.context;
+    ctx.restore();
+  });
+  
+  swipe.addEventListener('input', function() {
+    map.render();
+  }, false);
+
 }
