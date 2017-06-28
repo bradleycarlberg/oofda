@@ -1,3 +1,5 @@
+var map;
+
 function initMap(centerLonLat, initialZoom, zoomExtent) {
   var osm = new ol.layer.Tile({
     source: new ol.source.OSM()
@@ -5,7 +7,7 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   
   var scaleLineControl = new ol.control.ScaleLine();
   
-  var map = new ol.Map({
+  map = new ol.Map({
     layers: [osm],
     target: 'map',
     controls: ol.control.defaults({
@@ -43,4 +45,28 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   swipe.addEventListener('input', function() {
     map.render();
   }, false);
+}
+
+function addLayer(url, title) {
+  $.get(url, function(data) { 
+    var vectorSource = new ol.source.Vector({
+      features: (new ol.format.GeoJSON()).readFeatures(data)
+    });
+
+	var vectorLayer = new ol.layer.Vector({
+      source: vectorSource
+    });
+	map.addLayer(vectorLayer);
+    addToLegend(title, vectorLayer);
+  });
+}
+
+function addToLegend(title, layer) {
+  var legendItem = $('<h4>' + title + '</h4>');
+  legendItem.on("click", function(evt) {
+	var isVisible = layer.getVisible();
+    layer.setVisible(!isVisible);
+  });
+
+  $('#legend').append(legendItem);
 }
