@@ -34,7 +34,8 @@ function addLayer(url, title) {
     });
 
 	var vectorLayer = new ol.layer.Vector({
-      source: vectorSource
+      source: vectorSource,
+	  style: styleFunction
     });
 	map.addLayer(vectorLayer);
     addToLegend(title, vectorLayer);
@@ -51,6 +52,63 @@ function addToLegend(title, layer) {
 
   $('#legend').append(legendItem);
 }
+
+// optimization
+var styleCache = {
+  default: new ol.style.Style({
+    fill: new ol.style.Fill({
+	  color: [255,255,255,0.5]
+	}),
+    stroke: new ol.style.Stroke({
+      color: [255,255,255,1],
+	  width: 1
+	}),
+    image: new ol.style.Circle({
+	  fill: new ol.style.Fill({
+	    color: [255,255,255,0.5]
+	  }),
+	  stroke: new ol.style.Stroke({
+		color: [255,255,255,1],
+	    width: 1
+	  }),
+	  radius: 3 
+	})
+  })
+};
+function styleFunction(feature, resolution) {
+  var id = feature.get('CITY_LIMIT');
+  if (!id) {
+    return [styleCache.default];
+  }
+  if (!styleCache[id]) {
+	var color = [255,255,255,1];
+	if (id == 1) {
+		color = [244, 241, 66, 1];
+	} else if (id == 2) {
+		color = [244, 166, 65, 1];
+	} else if (id == 3) {
+		color = [244, 65, 65, 1];
+	} else if (id == 5) {
+		color = [184, 65, 244, 1];
+	} else {
+		color = [255, 255, 255, 1];
+	}
+	var fillColor = color;
+	var strokeColor = color;
+	fillColor[3] = 0.5;
+    styleCache[id] = new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: fillColor
+      }),
+      stroke: new ol.style.Stroke({
+	    color: strokeColor,
+		width: 1
+	  })
+    });
+  }
+  return [styleCache[id]];
+}
+
 
 function enableSwipe(layer) {
   var swipe = document.getElementById('swipe');
