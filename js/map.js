@@ -27,7 +27,7 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   
 }
 
-function addLayer(url, title) {
+function addLayer(url, title, colorramp) {
   $.get(url, function(data) { 
     var vectorSource = new ol.source.Vector({
       features: (new ol.format.GeoJSON()).readFeatures(data)
@@ -38,19 +38,30 @@ function addLayer(url, title) {
 	  style: styleFunction
     });
 	map.addLayer(vectorLayer);
-    addToLegend(title, vectorLayer);
+    addToLegend(title, vectorLayer, colorramp);
 	enableSwipe(vectorLayer);
   });
 }
 
-function addToLegend(title, layer) {
+function addToLegend(title, layer, colorramp) {
   var legendItem = $('<h4>' + title + '</h4>');
+  $('#legend').append(legendItem);
+  
+  var legendScale = $('<ul class="legend-labels"></ul>');
+  legendItem.after(legendScale);
+  
+  for(var i = 0; i<colorramp.length;i++){
+	var li = '<li><span style="background:' + colorramp[i]['color'] + ';"></span>' +
+	colorramp[i]['label'] + '</li>';
+	legendScale.append($(li));
+  }
+  
   legendItem.on("click", function(evt) {
 	var isVisible = layer.getVisible();
     layer.setVisible(!isVisible);
   });
 
-  $('#legend').append(legendItem);
+  
 }
 
 // optimization
