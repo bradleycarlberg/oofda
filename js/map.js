@@ -65,7 +65,7 @@ var styleCache = {
 	}),
     image: new ol.style.Circle({
 	  fill: new ol.style.Fill({
-	    color: [255,255,255,0.5]
+	    color: [0,0,0,0.5]
 	  }),
 	  stroke: new ol.style.Stroke({
 		color: [255,255,255,1],
