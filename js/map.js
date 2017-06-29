@@ -44,7 +44,7 @@ function addLayer(url, title, colorramp) {
 }
 
 function addToLegend(title, layer, colorramp) {
-  var legendItem = $('<h4>' + title + '</h4>');
+  var legendItem = $('<button class="visible"></button><p>' + title + '</p>');
   $('#legend').append(legendItem);
   
   var legendScale = $('<ul class="legend-labels"></ul>');
