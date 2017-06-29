@@ -27,20 +27,29 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   
 }
 
-function addLayer(url, title, colorramp, styleFunction, swipe) {
-  $.get(url, function(data) { 
-    var vectorSource = new ol.source.Vector({
-      features: (new ol.format.GeoJSON()).readFeatures(data)
+function addLayer(url, title, colorramp, styleFunction, swipe, promise) {
+  if (promise == undefined) {
+	promise = $.Deferred();
+	promise.resolve();
+  }
+  var myPromise = $.Deferred();
+  $.when(promise).then(function() {
+    $.get(url, function(data) { 
+      var vectorSource = new ol.source.Vector({
+  	    features: (new ol.format.GeoJSON()).readFeatures(data)
+  	  });
+  
+  	  var vectorLayer = new ol.layer.Vector({
+  	    source: vectorSource,
+  	    style: styleFunction
+  	  });
+  	  map.addLayer(vectorLayer);
+  	  addToLegend(title, vectorLayer, colorramp);
+  	  if (swipe) {enableSwipe(vectorLayer);}
+	  myPromise.resolve();
     });
-
-	var vectorLayer = new ol.layer.Vector({
-      source: vectorSource,
-	  style: styleFunction
-    });
-	map.addLayer(vectorLayer);
-    addToLegend(title, vectorLayer, colorramp);
-	if (swipe) {enableSwipe(vectorLayer);}
   });
+  return myPromise;
 }
 
 function addToLegend(title, layer, colorramp) {

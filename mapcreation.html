@@ -36,12 +36,12 @@
       // END PARAMETERS
 
       initMap(centerLonLat, initialZoom, zoomExtent);
-	  addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
+	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
 	    color: '#0000FF',
 		label: 'Flooded Area'
 	  }], historicalStyle, false);
-      addLayer("Data/HWM_BR_new.json", "High Water Marks", [], categoricalStyle, true);
-	  addLayer("Data/City_File_for_example.json", "Mock Depths",colorramp, categoricalStyle, true);
+      var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [], categoricalStyle, true, areaPromise);
+	  var catPromise = addLayer("Data/City_File_for_example.json", "Mock Depths",colorramp, categoricalStyle, true, hwmPromise);
 	</script>
   </body>
 </html>
