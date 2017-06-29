@@ -27,7 +27,7 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   
 }
 
-function addLayer(url, title, colorramp) {
+function addLayer(url, title, colorramp, styleFunction, swipe) {
   $.get(url, function(data) { 
     var vectorSource = new ol.source.Vector({
       features: (new ol.format.GeoJSON()).readFeatures(data)
@@ -39,7 +39,7 @@ function addLayer(url, title, colorramp) {
     });
 	map.addLayer(vectorLayer);
     addToLegend(title, vectorLayer, colorramp);
-	enableSwipe(vectorLayer);
+	if (swipe) {enableSwipe(vectorLayer);}
   });
 }
 
@@ -86,7 +86,7 @@ var styleCache = {
 	})
   })
 };
-function styleFunction(feature, resolution) {
+function categoricalStyle(feature, resolution) {
   var id = feature.get('CITY_LIMIT');
   if (!id) {
     return [styleCache.default];
@@ -118,6 +118,26 @@ function styleFunction(feature, resolution) {
     });
   }
   return [styleCache[id]];
+}
+
+function historicalStyle(feature, resolution) {
+  if (!styleCache["historical"]) {
+	var color = [0,0,255,1];
+	
+	var fillColor = color;
+	var strokeColor = color;
+	fillColor[3] = 0.5;
+    styleCache["historical"] = new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: fillColor
+      }),
+      stroke: new ol.style.Stroke({
+	    color: strokeColor,
+		width: 1
+	  })
+    });
+  }
+  return [styleCache["historical"]];
 }
 
 
