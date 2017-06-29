@@ -56,7 +56,7 @@ function addToLegend(title, layer, colorramp) {
   var legendItem = $('<button class="visible"></button>');
   $('#legend').append(legendItem);
   
-  var legendLabel = $('<span>' + title + '</span>');
+  var legendLabel = $('<span style="padding-left: 10px">' + title + '</span>');
   legendItem.after(legendLabel)
 
   var legendScale = $('<ul class="legend-labels"></ul>');
