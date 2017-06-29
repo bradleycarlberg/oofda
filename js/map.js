@@ -27,7 +27,7 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   
 }
 
-function addLayer(url, title, colorramp, styleFunction, swipe, promise) {
+function addLayer(url, title, colorramp, styleFunction, swipe, promise, swatchFunction) {
   if (promise == undefined) {
 	promise = $.Deferred();
 	promise.resolve();
@@ -44,7 +44,7 @@ function addLayer(url, title, colorramp, styleFunction, swipe, promise) {
   	    style: styleFunction
   	  });
   	  map.addLayer(vectorLayer);
-  	  addToLegend(title, vectorLayer, colorramp);
+  	  addToLegend(title, vectorLayer, colorramp, swatchFunction);
   	  if (swipe) {enableSwipe(vectorLayer);}
 	  myPromise.resolve();
     });
@@ -52,7 +52,7 @@ function addLayer(url, title, colorramp, styleFunction, swipe, promise) {
   return myPromise;
 }
 
-function addToLegend(title, layer, colorramp) {
+function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendItem = $('<button class="visible"></button>');
   $('#legend').append(legendItem);
   
@@ -63,8 +63,7 @@ function addToLegend(title, layer, colorramp) {
   legendLabel.after(legendScale);
   
   for(var i = 0; i<colorramp.length;i++){
-	var li = '<li><span style="background:' + colorramp[i]['color'] + ';"></span>' +
-	colorramp[i]['label'] + '</li>';
+    li = swatchFunction(colorramp[i]);
 	legendScale.append($(li));
   }
   
@@ -93,7 +92,7 @@ var styleCache = {
 	    color: [0,0,0,0.5]
 	  }),
 	  stroke: new ol.style.Stroke({
-		color: [255,255,255,1],
+		color: [0,0,0,1],
 	    width: 1
 	  }),
 	  radius: 3 
@@ -152,6 +151,20 @@ function historicalStyle(feature, resolution) {
     });
   }
   return [styleCache["historical"]];
+}
+
+function areaSwatch(swatch) {
+  var li = '<li><span style="background:' + swatch.color + ';"></span>' + swatch.label + '</li>';
+  return li;
+}
+
+function pointSwatch(swatch) {
+  var svg = '<svg height="15" width="15">' +
+		  '<circle cx="7" cy="7" r="4" stroke="' + swatch.color +
+		  '" stroke-width="1" fill="' + swatch.color +
+		  '" fill-opacity="' + swatch.opacity + '" /></svg>';
+  var li = '<li>' + svg + swatch.label + '</li>';
+  return li;
 }
 
 
