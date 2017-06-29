@@ -14,3 +14,12 @@
 #swipe {
 	width: 80%;
 }
+
+#legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 50px;
+    }
+	
+li {list-style: none}

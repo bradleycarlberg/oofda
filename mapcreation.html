@@ -20,10 +20,17 @@
       var centerLonLat = [-91.1403, 30.4583]; 
       var initialZoom = 10;
       var zoomExtent = [10, 17];
+	  var colorramp = [{
+	    color: '#F4F142',
+		label: 'Ankle to knee'
+	  }, {
+	    color: '#F4A642',
+		label: 'Knee to waist'
+	  }]
       // END PARAMETERS
 
       initMap(centerLonLat, initialZoom, zoomExtent);
-      addLayer("Data/HWM_BR.json", "High Water Marks");
+      addLayer("Data/HWM_BR_new.json", "High Water Marks");
 	  addLayer("Data/City_File_for_example.json", "Mock Depths");
 	</script>
   </body>
