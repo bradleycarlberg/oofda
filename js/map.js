@@ -154,12 +154,12 @@ function historicalStyle(feature, resolution) {
 }
 
 function areaSwatch(swatch) {
-  var li = '<li><span style="background:' + swatch.color + ';"></span>' + swatch.label + '</li>';
+  var li = '<li><span style="background:' + swatch.color + ';" class="margin"></span>' + swatch.label + '</li>';
   return li;
 }
 
 function pointSwatch(swatch) {
-  var svg = '<svg height="15" width="15">' +
+  var svg = '<svg height="15" width="15" class="margin">' +
 		  '<circle cx="7" cy="7" r="4" stroke="' + swatch.color +
 		  '" stroke-width="1" fill="' + swatch.color +
 		  '" fill-opacity="' + swatch.opacity + '" /></svg>';
