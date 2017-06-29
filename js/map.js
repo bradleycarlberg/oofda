@@ -44,11 +44,14 @@ function addLayer(url, title, colorramp, styleFunction, swipe) {
 }
 
 function addToLegend(title, layer, colorramp) {
-  var legendItem = $('<button class="visible"></button><p>' + title + '</p>');
+  var legendItem = $('<button class="visible"></button>');
   $('#legend').append(legendItem);
   
+  var legendLabel = $('<span>' + title + '</span>');
+  legendItem.after(legendLabel)
+
   var legendScale = $('<ul class="legend-labels"></ul>');
-  legendItem.after(legendScale);
+  legendLabel.after(legendScale);
   
   for(var i = 0; i<colorramp.length;i++){
 	var li = '<li><span style="background:' + colorramp[i]['color'] + ';"></span>' +
@@ -59,6 +62,8 @@ function addToLegend(title, layer, colorramp) {
   legendItem.on("click", function(evt) {
 	var isVisible = layer.getVisible();
     layer.setVisible(!isVisible);
+	$(evt.target).toggleClass("visible");
+	$(evt.target).toggleClass("invisible");	
   });
 
   
