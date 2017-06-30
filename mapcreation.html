@@ -47,6 +47,12 @@
       }], categoricalStyle, true, areaPromise, pointSwatch);
 	  var catPromise = addLayer("Data/City_File_for_example.json", "Mock Depths",colorramp,
         categoricalStyle, true, hwmPromise, areaSwatch);
+	  var pinkyPromise = addLayer("Data/PrelimPhotoLocations.json", "Landmarks",[{
+		color: '#FF0000',
+		strokecolor: '#000000',
+		label: 'Photo Locations',
+		opacity: 0.7}], 
+		photoStyle, false, catPromise, pointSwatch);
 	</script>
   </body>
 </html>

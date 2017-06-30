@@ -152,7 +152,23 @@ function historicalStyle(feature, resolution) {
   }
   return [styleCache["historical"]];
 }
-
+function photoStyle(feature, resolution) {
+  if (!styleCache["Photo"]) {
+    styleCache["Photo"] = new ol.style.Style({
+    image: new ol.style.Circle({
+	  fill: new ol.style.Fill({
+	    color: [255,0,0,0.5]
+	  }),
+	  stroke: new ol.style.Stroke({
+		color: [0,0,0,1],
+	    width: 1
+	  }),
+	  radius: 3 
+	})
+    });
+  }
+  return [styleCache["Photo"]];
+}
 function areaSwatch(swatch) {
   var li = '<li><span style="background:' + swatch.color + ';" class="margin"></span>' + swatch.label + '</li>';
   return li;
@@ -160,7 +176,7 @@ function areaSwatch(swatch) {
 
 function pointSwatch(swatch) {
   var svg = '<svg height="15" width="15" class="margin">' +
-		  '<circle cx="7" cy="7" r="4" stroke="' + swatch.color +
+		  '<circle cx="7" cy="7" r="4" stroke="' + swatch.strokecolor +
 		  '" stroke-width="1" fill="' + swatch.color +
 		  '" fill-opacity="' + swatch.opacity + '" /></svg>';
   var li = '<li>' + svg + swatch.label + '</li>';
