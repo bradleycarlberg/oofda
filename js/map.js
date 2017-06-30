@@ -27,7 +27,7 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   
 }
 
-function addLayer(url, title, colorramp, styleFunction, swipe, promise, swatchFunction) {
+function addLayer(url, title, colorramp, styleFunction, swipe, promise, swatchFunction, popupSelector) {
   if (promise == undefined) {
 	promise = $.Deferred();
 	promise.resolve();
@@ -44,6 +44,13 @@ function addLayer(url, title, colorramp, styleFunction, swipe, promise, swatchFu
   	    style: styleFunction
   	  });
   	  map.addLayer(vectorLayer);
+	  if (popupSelector != undefined) {
+        var click = new ol.interaction.Select({
+		  layers: [vectorLayer]
+		});
+        click.on("select", popupSelector);
+		map.addInteraction(click);
+	  }
   	  addToLegend(title, vectorLayer, colorramp, swatchFunction);
   	  if (swipe) {enableSwipe(vectorLayer);}
 	  myPromise.resolve();
