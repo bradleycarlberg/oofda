@@ -16,7 +16,10 @@
 	<div id="legend" class="legend">
 	  <h2>Legend:</h2>
 	</div>
-    
+    <div id="photopopup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="photopopup-content"></div>
+    </div>
 
     <script>
       // FLOOD EVENT PARAMETERS
@@ -49,7 +52,7 @@
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);
 	  var catPromise = addLayer("Data/City_File_for_example.json", "Mock Depths",colorramp,
-        categoricalStyle, true, hwmPromise, areaSwatch);
+        categoricalStyle, true, hwmPromise, areaSwatch, undefined);
 	  var pinkyPromise = addLayer("Data/PrelimPhotoLocations.json", "Landmarks",[{
 		color: '#FF0000',
 		strokecolor: '#000000',
@@ -62,7 +65,7 @@
 		text:'River stage is the height of the water measured from a point, usually near the bottom of the stream. Flood stage is the height the water reaches that begins to threaten people and property. The National Weather Service defines 4 flood stages - Action, Minor, Moderate, and Major.',
 		id:'PopupThing'
 		}], 
-		photoStyle, false, catPromise, pointSwatch);
+		photoStyle, false, catPromise, pointSwatch, photopopup);
 	</script>
   </body>
 </html>

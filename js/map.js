@@ -197,6 +197,23 @@ function pointSwatch(swatch) {
   return li;
 }
 
+  /* Create an overlay to anchor the popup to the map.*/
+    var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
+        element: $('photopopup'),
+        autoPan: true,
+        autoPanAnimation: {
+          duration: 250
+        }
+      }));
+	  
+function photopopup (event){
+	var coordinate = evt.coordinate;
+	var features = event.target.getFeatures(); 
+	var photo = features[0].get("Photo");
+	var html = '<h2>Photo: <img src="Data/Photos/' + photo + '" /></h2>'
+	$('photopopup-content').html(html);
+	overlay.setPosition(coordinate);}
+
 function enableSwipe(layer) {
   var swipe = document.getElementById('swipe');
   
