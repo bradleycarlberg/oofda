@@ -206,7 +206,7 @@ function pointSwatch(swatch) {
 
   /* Create an overlay to anchor the popup to the map.*/
     var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
-        element: $('photopopup'),
+        element: $('#photopopup'),
         autoPan: true,
         autoPanAnimation: {
           duration: 250
@@ -214,7 +214,7 @@ function pointSwatch(swatch) {
       }));
 	  
 function photopopup (event){
-	var coordinate = evt.coordinate;
+	var coordinate = event.coordinate;
 	var features = event.target.getFeatures(); 
 	var photo = features[0].get("Photo");
 	var html = '<h2>Photo: <img src="Data/Photos/' + photo + '" /></h2>'
