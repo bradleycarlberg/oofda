@@ -25,6 +25,25 @@
     height: 15px;
     width: 50px;
     }
+
+/*popup box*/	
+.popup {
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 100px 30% auto 30%;
+	background: #aaaaaa;
+	border-radius: 5px;
+	clear: both;
+	padding:15px;
+	
+	
+}
+
+/*to show popup box*/		
+.popup:target{visibility:visible}
 	
 li {list-style: none}
 

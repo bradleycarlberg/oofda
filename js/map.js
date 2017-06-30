@@ -174,11 +174,19 @@ function areaSwatch(swatch) {
   return li;
 }
 
-// this draws points
+// these are dots on legend
 function pointSwatch(swatch) {
   var li = "";
   if (swatch.type && swatch.type == "FAQ") {
-	  li = '<li><img src = "images/FAQ-icon.png" class="FAQ margin"/>' + swatch.label + '</li>';
+	  li = $('<li/>');
+	  var img = $('<a href="#' + swatch.id + '"><img src="images/FAQ-icon.png" class="FAQ margin"/></a>');
+	  var closePopup = $('<a class="close" href="#">&times;</a>');
+	  var popup = $('<div id="' + swatch.id + '" class="popup">' + swatch.text + '</div>');
+	  $(li).append(img);
+	  $(li).append(swatch.label);
+	  $(popup).append(closePopup);
+	  $(li).append(popup);
+	  
   } else {
     var svg = '<svg height="15" width="15" class="margin">' +
 		  '<circle cx="7" cy="7" r="4" stroke="' + swatch.strokecolor +
@@ -186,11 +194,6 @@ function pointSwatch(swatch) {
 		  '" fill-opacity="' + swatch.opacity + '" /></svg>';
     li = '<li>' + svg + swatch.label + '</li>';
   }
-  return li;
-}
-
-function FAQSwatch(swatch) {
-  
   return li;
 }
 
