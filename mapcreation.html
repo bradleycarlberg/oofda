@@ -9,11 +9,14 @@
 	<script src="js/map.js"></script>
   </head>
   <body>
+  <div id="mapcontainer">
     <div id="map" class="map"></div>
+    <input id="swipe" type="range" value="0" />
+    </div>
 	<div id="legend" class="legend">
 	  <h2>Legend:</h2>
 	</div>
-    <input id="swipe" type="range" value="0" />
+    
 
     <script>
       // FLOOD EVENT PARAMETERS
@@ -47,12 +50,6 @@
       }], categoricalStyle, true, areaPromise, pointSwatch);
 	  var catPromise = addLayer("Data/City_File_for_example.json", "Mock Depths",colorramp,
         categoricalStyle, true, hwmPromise, areaSwatch);
-	  var pinkyPromise = addLayer("Data/PrelimPhotoLocations.json", "Landmarks",[{
-		color: '#FF0000',
-		strokecolor: '#000000',
-		label: 'Photo Locations',
-		opacity: 0.7}], 
-		photoStyle, false, catPromise, pointSwatch);
 	</script>
   </body>
 </html>
