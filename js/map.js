@@ -1,4 +1,5 @@
 var map;
+var overlay;
 
 function initMap(centerLonLat, initialZoom, zoomExtent) {
   var osm = new ol.layer.Tile({
@@ -7,6 +8,13 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
   
   var scaleLineControl = new ol.control.ScaleLine();
   
+  overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
+    element: document.getElementById('photopopup'),
+    autoPan: true,
+    autoPanAnimation: {
+      duration: 250
+    }
+  }));
   map = new ol.Map({
     layers: [osm],
     target: 'map',
@@ -17,6 +25,7 @@ function initMap(centerLonLat, initialZoom, zoomExtent) {
     }).extend([
       scaleLineControl
     ]),
+	overlays: [overlay],
     view: new ol.View({
       center: ol.proj.fromLonLat(centerLonLat),
       zoom: initialZoom,
@@ -204,22 +213,23 @@ function pointSwatch(swatch) {
   return li;
 }
 
-  /* Create an overlay to anchor the popup to the map.*/
-    var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
-        element: $('photopopup'),
-        autoPan: true,
-        autoPanAnimation: {
-          duration: 250
-        }
-      }));
-	  
+/* Create an overlay to anchor the popup to the map.*/
 function photopopup (event){
-	var coordinate = evt.coordinate;
-	var features = event.target.getFeatures(); 
-	var photo = features[0].get("Photo");
-	var html = '<h2>Photo: <img src="Data/Photos/' + photo + '" /></h2>'
-	$('photopopup-content').html(html);
-	overlay.setPosition(coordinate);}
+	var feature = event.target.getFeatures().getArray()[0];
+	var coordinate = feature.getGeometry().getCoordinates();
+	var site = feature.get("Site");
+	var photo = feature.get("Photo");
+	var elev = feature.get("Water_Elev");
+	var description = feature.get("Description");
+	var html = '<p>Site: ' + site + '</p><p>Elev: ' + elev + '</p>';
+	$('#photopopup-content').html(html);
+	overlay.setPosition(coordinate);
+  	$('#popup-closer').on('click', function() {
+  	  overlay.setPosition(undefined);
+	  this.blur();
+	  return false;
+    });
+}
 
 function enableSwipe(layer) {
   var swipe = document.getElementById('swipe');
