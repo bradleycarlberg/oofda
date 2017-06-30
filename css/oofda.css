@@ -1,10 +1,14 @@
-#map {
+#mapcontainer {
 	width: 80%;
 	float: left;
 	margin: 0px;
 	padding: 0px;
 }
 
+#map {
+    width: 100%;
+    }
+    
 #legend {
 	width: 20%;
     height: 100%;
@@ -12,9 +16,9 @@
 }
 
 #swipe {
-	width: 80%;
+	width: 100%;
 }
-
+  
 #legend ul.legend-labels li span {
     display: block;
     float: left;
@@ -44,3 +48,14 @@ li {list-style: none}
 .margin {
    margin-right: 10px;
    }
+@media only screen 
+    and (max-width: 768px)
+ {
+    #mapcontainer {
+	width: 100%;
+	
+    }
+     #legend {
+	width: 100%;
+    }
+}
