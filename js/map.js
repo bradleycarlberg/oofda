@@ -63,11 +63,14 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendItem = $('<button class="visible"></button>');
   $('#legend').append(legendItem);
   
-  var legendLabel = $('<span style="padding-left: 10px">' + title + '</span>');
+  var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
   legendItem.after(legendLabel)
+  
+  var legendCol = $('<button class="plus"></button>');
+  legendLabel.after(legendCol)
 
   var legendScale = $('<ul class="legend-labels"></ul>');
-  legendLabel.after(legendScale);
+  legendCol.after(legendScale);
   
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
