@@ -221,11 +221,11 @@ function pointSwatch(swatch) {
 function photopopup (event){
 	var feature = event.target.getFeatures().getArray()[0];
 	var coordinate = feature.getGeometry().getCoordinates();
-	var site = feature.get("Site");
+	var photodetails = feature.get("Photo_Details");
 	var photo = feature.get("Photo");
 	var elev = feature.get("Water_Elev");
 	var description = feature.get("Description");
-	var html = '<p>Site: ' + site + '</p><p>Elev: ' + elev + '</p>';
+	var html = '<p>Photo_Details: ' + photodetails + '</p><p>Elev: ' + elev + '</p>';
 	$('#photopopup-content').html(html);
 	overlay.setPosition(coordinate);
   	$('#popup-closer').on('click', function() {
