@@ -119,6 +119,11 @@ li {list-style: none}
         content: "✖";
       }
 	  
+.popup-photo {
+	width:80%;
+	height:auto
+	  } 
+	  
 @media only screen 
     and (max-width: 768px)
  {
