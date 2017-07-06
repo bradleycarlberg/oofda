@@ -221,11 +221,14 @@ function pointSwatch(swatch) {
 function photopopup (event){
 	var feature = event.target.getFeatures().getArray()[0];
 	var coordinate = feature.getGeometry().getCoordinates();
-	var site = feature.get("Site");
-	var photo = feature.get("Photo");
-	var elev = feature.get("Water_Elev");
-	var description = feature.get("Description");
-	var html = '<p>Site: ' + site + '</p><p>Elev: ' + elev + '</p>';
+	var photo = feature.get("Photo_Location");
+	var water = feature.get("Where_is_water");
+	var gage = feature.get("Nearest_Gage_Name");
+	var gagereading = feature.get("Gage_Reading");
+	var html = '<p>Citizen Photo ' + photo + 
+		'</p><p>Where is water: ' + water + 
+		'</p><p>Nearest USGS gage:' + gage + 
+		'</p><p>Gage reading at time of photo:' + gagereading + '</p>';
 	$('#photopopup-content').html(html);
 	overlay.setPosition(coordinate);
   	$('#popup-closer').on('click', function() {
