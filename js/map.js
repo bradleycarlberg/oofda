@@ -225,7 +225,7 @@ function photopopup (event){
 	var water = feature.get("Where_is_w");
 	var gage = feature.get("Nearest_1");
 	var gagereading = feature.get("Gage_Readi");
-	var html = '<img src = "' + photo + '" class = "popup-photo" />'
+	var html = '<img src = "' + photo + '" class = "popup-photo" />' 
 		'</p><p>Where is water: ' + water + 
 		'</p><p>Nearest USGS gage:' + gage + 
 		'</p><p>Gage reading at time of photo:' + gagereading + '</p>';
