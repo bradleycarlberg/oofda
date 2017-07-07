@@ -225,12 +225,10 @@ function photopopup (event){
 	var water = feature.get("Where_is_w");
 	var gage = feature.get("Nearest_1");
 	var gagereading = feature.get("Gage_Readi");
-	var photoHtml = '<img src="' + photo + '" class = "popup-photo" />';
-	var waterHtml = '</p><p>Where is water: ' + water + ;
-	var usgsHtml = '</p><p>Nearest USGS gage:' + gage + ;
-	var readingHtml = '</p><p>Gage reading at time of photo:' + gagereading + ;
-	var html = photoHtml + waterHtml + usgsHtml + readingHtml;
-	
+	var html = '<img src = "' + photo + '" class = "popup-photo" />'
+	var waterHtml	'</p><p>Where is water: ' + water + 
+		'</p><p>Nearest USGS gage:' + gage + 
+		'</p><p>Gage reading at time of photo:' + gagereading + '</p>';
 	$('#photopopup-content').html(html);
 	overlay.setPosition(coordinate);
   	$('#popup-closer').on('click', function() {
@@ -239,10 +237,12 @@ function photopopup (event){
 	  return false;
     });
 }
-/* var html = '<img src = "' + photo + '" class = "popup-photo" />'
-	var waterHtml	'</p><p>Where is water: ' + water + 
-		'</p><p>Nearest USGS gage:' + gage + 
-		'</p><p>Gage reading at time of photo:' + gagereading + '</p>';*/
+/*var photoHtml = '<img src="' + photo + '" class = "popup-photo" />';
+	var waterHtml = '</p><p>Where is water: ' + water + ;
+	var usgsHtml = '</p><p>Nearest USGS gage:' + gage + ;
+	var readingHtml = '</p><p>Gage reading at time of photo:' + gagereading + ;
+	var html = photoHtml + waterHtml + usgsHtml + readingHtml;*/
+
 		
 function enableSwipe(layer) {
   var swipe = document.getElementById('swipe');
