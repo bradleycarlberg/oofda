@@ -225,10 +225,15 @@ function photopopup (event){
 	var water = feature.get("Where_is_w");
 	var gage = feature.get("Nearest__1");
 	var gagereading = feature.get("Gage_Readi");
-	var html = '<img src = "' + photo + '" class = "popup-photo" />' +
+	var photoHtml = '<img src="' + photo + '" class = "popup-photo" />';
+	var waterHtml = '<p>Where is water: ' + water + '</p>';
+	var usgsHtml = '<p>Nearest USGS gage:' + gage + '</p>';
+	var readingHtml = '<p>Gage reading at time of photo:' + gagereading + '</p>';
+	var html = photoHtml + waterHtml + usgsHtml + readingHtml;
+	/* old code var html = '<img src = "' + photo + '" class = "popup-photo" />' +
 		'<p>Where is water: ' + water + '</p>' +
 		'<p>Nearest USGS gage: ' + gage + '</p>' +
-		'<p>Gage reading at time of photo: ' + gagereading + '</p>';
+		'<p>Gage reading at time of photo: ' + gagereading + '</p>';*/
 	$('#photopopup-content').html(html);
 	overlay.setPosition(coordinate);
   	$('#popup-closer').on('click', function() {
