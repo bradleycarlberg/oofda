@@ -92,14 +92,12 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
 	$(evt.target).toggleClass("visible");
 	$(evt.target).toggleClass("invisible");	
   });
-
-  legendCol.on("click", function(evt) {
-	var isExpand = layer.getExpand();
-	layer.setExpand(!isExpand);
-	$(evt.target).toggleClass("plus");
-	$(evt.target).toggleClass("minus");
-  })
-}
+ 
+ legendCol.click(function () {
+	  legendScale.slideToggle() 	  
+  });
+}  
+ 
 
 // hmw optimization
 var styleCache = {
