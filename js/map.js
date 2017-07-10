@@ -96,7 +96,7 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   
 }
 
-// optimization
+// hmw optimization
 var styleCache = {
   default: new ol.style.Style({
     fill: new ol.style.Fill({
@@ -118,6 +118,7 @@ var styleCache = {
 	})
   })
 };
+
 function categoricalStyle(feature, resolution) {
   var id = feature.get('CITY_LIMIT');
   if (!id) {
