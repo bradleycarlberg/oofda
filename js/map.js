@@ -280,7 +280,7 @@ function enableSwipe(layer) {
 }, false);}
 
 /*test terms
- function addToTerms(title, colorramp, swatchFunction) {
+ function addToTerms(title, definition, swatchFunction) {
   var termsScale = $('<ul class="terms-labels"></ul>');
   
   var legendItem = $('<popup class="FAQ"></popup>');
