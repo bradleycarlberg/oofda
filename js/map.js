@@ -100,7 +100,7 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   });
 }  
  
-function addLegendItem(title, colorramp, promise, swatchFunction, popupSelector){
+function addLegendItem(title, colorramp, promise, swatchFunction){
 	var legendItem = $('<button class="FAQ"></button>');
     $('#terms').append(legendItem);
 	
