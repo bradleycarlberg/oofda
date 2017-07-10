@@ -100,8 +100,15 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   });
 }  
  
+function addLegendItem(title, colorramp, promise, swatchFunction, popupSelector){
+	var legendItem = $('<button class="FAQ"></button>');
+    $('#terms').append(legendItem);
+	
+	var legendScale = $('<ul class="legend-labels"></ul>');
+    legendItem.after(legendScale);
+	}
 
-
+	
 // hmw optimization
 var styleCache = {
   default: new ol.style.Style({
