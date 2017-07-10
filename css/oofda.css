@@ -22,7 +22,7 @@
     width: 50px;
     }
 	
-#terms {
+/*#terms {
 	width: 25%;
 	height: 30%;
 	float: right
@@ -33,8 +33,9 @@
 	float:left;
 	height:10px;
 	width:50px
-	}
-
+}
+	*/
+	
 #swipe {
 	width: 100%;
 }

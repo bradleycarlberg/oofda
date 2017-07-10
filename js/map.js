@@ -78,9 +78,6 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendCol = $('<button class="minus"></button>');
   legendLabel.after(legendCol)
 
-  /*var legendExp = $('<button class="plus"></button>');
-  legendCol.after(legendExp);*/
-  
   var legendScale = $('<ul class="legend-labels"></ul>');
   legendCol.after(legendScale);
   
@@ -103,6 +100,7 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
 	$(evt.target).toggleClass("minus");
   })
 }
+
 
 // hmw optimization
 var styleCache = {

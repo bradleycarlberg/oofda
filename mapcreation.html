@@ -24,6 +24,7 @@
 	  <h3>Helpful Flood Terms:</h3>
 	</div>
 	
+	
     <script>
       // FLOOD EVENT PARAMETERS
       var centerLonLat = [-91.1403, 30.4583]; 
@@ -69,7 +70,18 @@
 		id:'PopupThing'
 		}], 
 		photoStyle, false, catPromise, pointSwatch, photopopup);
-	 
+	  var termsPromise = addLayer(undefined,"Helpful Flood Terms", [{
+		label: 'Inundation Map',
+		type:"FAQ",
+		text:'another excellent definition',
+		id:'PopupThing'
+		},{
+		label: 'River Stage',
+		type:"FAQ",
+		text:'River stage is the height of the water measured from a point, usually near the bottom of the stream. Flood stage is the height the water reaches that begins to threaten people and property. The National Weather Service defines 4 flood stages - Action, Minor, Moderate, and Major.',
+		id:'PopupThing'
+		}],
+		photoStyle, false, pinkyPromise, pointSwatch, undefined)
 
 	</script>
   </body>
