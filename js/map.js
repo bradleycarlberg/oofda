@@ -78,6 +78,9 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendCol = $('<button class="minus"></button>');
   legendLabel.after(legendCol)
 
+  /*var legendExp = $('<button class="plus"></button>');
+  legendCol.after(legendExp);*/
+  
   var legendScale = $('<ul class="legend-labels"></ul>');
   legendCol.after(legendScale);
   
@@ -267,6 +270,29 @@ function enableSwipe(layer) {
   
   swipe.addEventListener('input', function() {
     map.render();
-  }, false);
+}, false);}
 
-}
+/*test terms
+ function addToTerms(title, colorramp, swatchFunction) {
+  var termsScale = $('<ul class="terms-labels"></ul>');
+  
+  var legendItem = $('<popup class="FAQ"></popup>');
+  $('#terms').append(legendItem);
+  
+  var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
+  legendItem.after(legendLabel)
+  
+  var legendCol = $('<button class="minus"></button>');
+  legendLabel.after(legendCol)
+  
+  var legendExp = $('<button class="plus"></button>');
+  legendCol.after(legendExp)
+
+  var legendScale = $('<ul class="legend-labels"></ul>');
+  legendCol.after(legendScale);
+  
+  for(var i = 0; i<colorramp.length;i++){
+    li = swatchFunction(colorramp[i]);
+	legendScale.append($(li));
+  }
+}*/
