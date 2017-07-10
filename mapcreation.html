@@ -46,13 +46,13 @@
 	    color: '#0000FF',
 		label: 'Flooded Area'
 	  }], historicalStyle, false, undefined, areaSwatch);
-      var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
+      /*var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
         color: '#000000',
         label: 'High water',
         opacity: 0.5
-      }], categoricalStyle, true, areaPromise, pointSwatch);
+      }], categoricalStyle, true, areaPromise, pointSwatch);*/
 	  var catPromise = addLayer("Data/City_File_for_example.json", "Mock Depths",colorramp,
-        categoricalStyle, true, hwmPromise, areaSwatch, undefined);
+        categoricalStyle, true, areaPromise, areaSwatch, undefined);
 	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "Baton Rouge 2016 Flood Photos",[{
 		color: '#FF0000',
 		strokecolor: '#000000',
