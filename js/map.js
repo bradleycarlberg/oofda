@@ -75,7 +75,7 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
   legendItem.after(legendLabel)
   
-  var legendCol = $('<button class="plus"></button>');
+  var legendCol = $('<button class="minus"></button>');
   legendLabel.after(legendCol)
 
   var legendScale = $('<ul class="legend-labels"></ul>');
