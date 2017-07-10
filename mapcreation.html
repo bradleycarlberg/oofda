@@ -14,7 +14,7 @@
     <input id="swipe" type="range" value="0" />
     </div>
 	<div id="legend" class="legend">
-	  <h2>Legend:</h2>
+	  <h2>Legend:</h2>	     
 	</div>
     <div id="photopopup" class="ol-popup">
       <a href="#" id="popup-closer" class="ol-popup-closer"></a>
@@ -51,9 +51,9 @@
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var catPromise = addLayer("Data/City_File_for_example.json", "Mock Depths",colorramp,
+	  var catPromise = addLayer("Data/City_File_for_example.json", "Hypothetical Depths",colorramp,
         categoricalStyle, true, areaPromise, areaSwatch, undefined);
-	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "Baton Rouge 2016 Flood Photos",[{
+	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
 		color: '#FF0000',
 		strokecolor: '#000000',
 		label: 'Photo Locations',
