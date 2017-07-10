@@ -63,7 +63,7 @@
 		label: 'Photo Locations',
 		type:"point",
 		opacity: 0.7
-		},{
+		}/*,{
 		label: 'USGS Gage',
 		type:"FAQ",
 		text:'Blah blah blah',
@@ -73,9 +73,15 @@
 		type:"FAQ",
 		text:"definition",
 		id:'PopupThing'
-		}], 
+		}*/], 
 		photoStyle, false, catPromise, pointSwatch, photopopup);
-	  var termsPromise = addLegendItem("Terms",[{
+	  var termsPromise = addLegendItem("Terms will be listed here.",[{
+		color: '#FF0000',
+		strokecolor: '#000000',
+		label: 'Photo Locations',
+		type:"point",
+		opacity: 0.7
+		},{
 		label: 'USGS Gage',
 		type:"FAQ",
 		text:'Blah blah blah',

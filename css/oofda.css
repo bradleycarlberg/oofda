@@ -87,7 +87,10 @@ li {list-style: none}
     }
 	
 .FAQ{
-	width:15px;}
+	background-image: url('../images/FAQ.png');
+	background-repeat: no-repeat;
+	height: 25px;
+	width: 25px;}
 	
 .margin {
    margin-right: 10px;
