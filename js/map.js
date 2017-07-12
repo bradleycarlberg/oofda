@@ -255,7 +255,7 @@ function photopopup (event){
 	var gage = feature.get("Nearest__1");
 	var gagereading = feature.get("Gage_Readi");
 	var photoHtml = '<img src="' + photo + '" class = "popup-photo" />';
-	var waterHtml = '<p>Where is water: ' + water + '</p>';
+	var waterHtml = '<p>Water depth: ' + water + '</p>';
 	var usgsHtml = '<p>Nearest USGS gage:' + gage + '</p>';
 	var readingHtml = '<p>Gage reading at time of photo:' + gagereading + '</p>';
 	var html = photoHtml + waterHtml + usgsHtml + readingHtml;
@@ -294,27 +294,36 @@ function enableSwipe(layer) {
     map.render();
 }, false);}
 
-/*test terms
- function addToTerms(title, definition, swatchFunction) {
-  var termsScale = $('<ul class="terms-labels"></ul>');
-  
-  var legendItem = $('<popup class="FAQ"></popup>');
-  $('#terms').append(legendItem);
+/*test terms*/
+
+ function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
+  var legendItem = $('<button class="visible"></button>');
+  $('#legend').append(legendItem);
   
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
   legendItem.after(legendLabel)
   
-  var legendCol = $('<button class="minus"></button>');
-  legendLabel.after(legendCol)
-  
-  var legendExp = $('<button class="plus"></button>');
-  legendCol.after(legendExp)
+  var legendExp = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
+  legendLabel.after(legendExp)
 
   var legendScale = $('<ul class="legend-labels"></ul>');
-  legendCol.after(legendScale);
+  legendExp.after(legendScale);
   
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
 	legendScale.append($(li));
   }
-}*/
+  
+  legendItem.on("click", function(evt) {
+	var isVisible = layer.getVisible();
+    layer.setVisible(!isVisible);
+	$(evt.target).toggleClass("visible");
+	$(evt.target).toggleClass("invisible");	
+  });
+ 
+ legendExp.click(function () {
+	  legendScale.slideToggle();
+      legendExp.toggleClass("plus");
+      legendExp.toggleClass("minus"); 	  
+  });
+} 
