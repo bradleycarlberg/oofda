@@ -100,8 +100,18 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   });
 }  
  
+function addLegendItem(title, colorramp, promise, swatchFunction){
+	var legendItem = $('<button class="FAQ"></button>');
+    $('#terms').append(legendItem);
+	
+	var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
+    legendItem.after(legendLabel)
+  
+	var legendScale = $('<ul class="legend-labels"></ul>');
+    legendLabel.after(legendScale);
+	}
 
-
+	
 // hmw optimization
 var styleCache = {
   default: new ol.style.Style({
@@ -223,6 +233,18 @@ function pointSwatch(swatch) {
   return li;
 }
 
+/*function FAQSwatch(swatch) {
+  var li = "";
+  (swatch.type && swatch.type == "FAQ") {
+	  li = $('<li/>');
+	  var img = $('<a href="#' + swatch.id + '"><img src="images/FAQ-icon.png" class="FAQ margin"/></a>');
+	  var closePopup = $('<a class="close" href="#">&times;</a>');
+	  var popup = $('<div id="' + swatch.id + '" class="popup">' + swatch.text + '</div>');
+	  $(li).append(img);
+	  $(li).append(swatch.label);
+	  $(popup).append(closePopup);
+	  $(li).append(popup);
+}}*/
 
 /* Create an overlay to anchor the popup to the map.*/
 function photopopup (event){

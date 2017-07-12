@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>oofda</title>
+    <link rel="stylesheet" href="css/ol-4.2.0.css" type="text/css">
+    <link rel="stylesheet" href="css/oofda.css" type="text/css">
+    <script src="js/ol-4.2.0.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/map.js"></script>
+  </head>
+  <body>
+  <div id="mapcontainer">
+    <div id="map" class="map"></div>
+    <input id="swipe" type="range" value="0" />
+    </div>
+	<div id="legend" class="legend">
+	  <h2>Legend:</h2>	     
+	</div>
+    <div id="photopopup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="photopopup-content"></div>
+    </div>
+	<div id="terms" class="terms">
+	  <h3>Helpful Flood Terms:</h3>
+	</div>
+	
+	
+    <script>
+      // FLOOD EVENT PARAMETERS
+      var centerLonLat = [-91.1403, 30.4583]; 
+      var initialZoom = 10;
+      var zoomExtent = [10, 17];
+	  var colorramp = [{
+	    color: '#F4F142',
+		label: ' Ankle to knee'
+	  }, {
+	    color: '#F4A642',
+		label: ' Knee to waist'
+	  }, {
+	    color: '#F44141',
+		label: ' Waist to head'	  
+	  }, {
+	    color: '#B841F4',
+	    label: ' Over head'
+	  }]
+      // END PARAMETERS
+
+      initMap(centerLonLat, initialZoom, zoomExtent);
+	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
+	    color: '#0000FF',
+		label: 'Flooded Area'
+	  }], historicalStyle, false, undefined, areaSwatch);
+      /*var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
+        color: '#000000',
+        label: 'High water',
+        opacity: 0.5
+      }], categoricalStyle, true, areaPromise, pointSwatch);*/
+	  var catPromise = addLayer("Data/City_File_for_example.json", "Hypothetical Depths",colorramp,
+        categoricalStyle, true, areaPromise, areaSwatch, undefined);
+	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
+		color: '#FF0000',
+		strokecolor: '#000000',
+		label: 'Photo Locations',
+		type:"point",
+		opacity: 0.7
+		}/*,{
+		label: 'USGS Gage',
+		type:"FAQ",
+		text:'Blah blah blah',
+		id:'PopupThing'
+		},{
+		label: 'Map',
+		type:"FAQ",
+		text:"definition",
+		id:'PopupThing'
+		}*/], 
+		photoStyle, false, catPromise, pointSwatch, photopopup);
+	  var termsPromise = addLegendItem("Terms will be listed here.",[{
+		color: '#FF0000',
+		strokecolor: '#000000',
+		label: 'Photo Locations',
+		type:"point",
+		opacity: 0.7
+		},{
+		label: 'USGS Gage',
+		type:"FAQ",
+		text:'Blah blah blah',
+		id:'PopupThing'
+		},{
+		label: 'Map',
+		type:"FAQ",
+		text:"definition",
+		id:'PopupThing'
+		}], pinkyPromise, pointSwatch)
+
+	</script>
+  </body>
+</html>
