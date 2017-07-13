@@ -47,13 +47,13 @@
 	    color: "#0000FF",
 		label: 'Flooded Area',
 		opacity: 0.5
-	  }],historicalStyle, false, undefined, areaSwatch, undefined);
+	  }], historicalStyle, false, undefined, areaSwatch, undefined);
       /*var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
         color: '#000000',
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var likelyPromise = addLayer("Data/City_File_for_example.json", "Probable Flood Extent",colorramp,
+	  var likelyPromise = addLayer("Data/City_File_for_example.json", "High Probability Flood Extent",colorramp,
         categoricalStyle, true, areaPromise, areaSwatch, undefined);
 	  var worstPromise = addLayer("Data/City_File_for_example.json", "Worst Case Flood Extent",colorramp,
         categoricalStyle, true, likelyPromise, areaSwatch, undefined);

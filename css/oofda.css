@@ -22,12 +22,11 @@
     width: 50px;
 	}
 	
-#terms {
+/*#terms {
 	width: 25%;
 	height: 30%;
 	float: right
-	}
-	
+	}*/	
 	
 #swipe {
 	width: 100%;
@@ -75,22 +74,22 @@ li {list-style: none}
 .minus {
 	background-image: url('../images/minus-icon.png');
 	background-repeat: no-repeat;
-	height: 25px;
-	width: 25px;
+	height: 15px;
+	width: 15px;
     }
 
 .plus {
 	background-image: url('../images/plus-icon.png');
 	background-repeat: no-repeat;
-	height: 25px;
-	width: 25px;
+	height: 15px;
+	width: 15px;
     }
 	
 .FAQ{
 	background-image: url('../images/FAQ-icon.png');
 	background-repeat: no-repeat;
-	height: 25px;
-	width: 25px;}
+	height: 15px;
+	width: 15px;}
 	
 .margin {
    margin-right: 10px;
