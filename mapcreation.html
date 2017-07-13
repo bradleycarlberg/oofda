@@ -44,21 +44,16 @@
 
       initMap(centerLonLat, initialZoom, zoomExtent);
 	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
-	    color: '#0000FF',
-		label: 'Flooded Area'
-	  },{
-		color: '#FF0000',
-		strokecolor: '#000000',
-		label: 'Photo Locations',
-		type:"point",
-		opacity: 0.7
-		}], historicalStyle, false, undefined,areaSwatch,photopopup);
+	    color: "#0000FF",
+		label: 'Flooded Area',
+		opacity: 0.5
+	  }], historicalStyle, false, undefined, areaSwatch, undefined);
       /*var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
         color: '#000000',
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var likelyPromise = addLayer("Data/City_File_for_example.json", "Probable Flood Extent",colorramp,
+	  var likelyPromise = addLayer("Data/City_File_for_example.json", "High Probability Flood Extent",colorramp,
         categoricalStyle, true, areaPromise, areaSwatch, undefined);
 	  var worstPromise = addLayer("Data/City_File_for_example.json", "Worst Case Flood Extent",colorramp,
         categoricalStyle, true, likelyPromise, areaSwatch, undefined);
@@ -68,7 +63,6 @@
 		label: 'Photo Locations',
 		type:"point",
 		opacity: 0.7
-
 		}],
 		photoStyle, false, worstPromise, pointSwatch, photopopup);
 	  var termsPromise = addToTerms("Useful Flood Terms",[{
@@ -84,7 +78,7 @@
 		},{
 		label: 'River Stage',
 		type:"FAQ",
-		text:'Blah blah blah',
+		text:'Blah blah blah blah',
 		id:'PopupThing'
 		},{
 		label: 'Flood Stage',
