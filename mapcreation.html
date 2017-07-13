@@ -43,10 +43,11 @@
       // END PARAMETERS
 
       initMap(centerLonLat, initialZoom, zoomExtent);
-	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", {
-	    color: '#0000FF',
-		label: 'Flooded Area'
-	  },historicalStyle, false, undefined,areaSwatch,undefined);
+	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
+	    color: "#0000FF",
+		label: 'Flooded Area',
+		opacity: 0.5
+	  }],historicalStyle, false, undefined, areaSwatch, undefined);
       /*var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
         color: '#000000',
         label: 'High water',

@@ -171,7 +171,7 @@ function categoricalStyle(feature, resolution) {
 
 function historicalStyle(feature, resolution) {
   if (!styleCache["historical"]) {
-	var color = [0,0,255,1];
+	var color = [0,0,255,.5];
 	
 	var fillColor = color;
 	var strokeColor = color;
@@ -182,7 +182,7 @@ function historicalStyle(feature, resolution) {
       }),
       stroke: new ol.style.Stroke({
 	    color: strokeColor,
-		width: 1
+		width: 2
 	  })
     });
   }
@@ -297,7 +297,18 @@ function enableSwipe(layer) {
 /*test terms*/
 
  function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
-  var legendItem = $('<button class="visible"></button>');
+  /*if (promise == undefined) {
+	promise = $.Deferred();
+	promise.resolve();
+  }
+  var myPromise = $.Deferred();
+  $.when(promise).then(function() {
+    $.get(title, function() { 
+      map.addToTerms(title);
+    });
+  });
+  return myPromise;*/
+  var legendItem = $('<button class="FAQ-icon"></button>');
   $('#legend').append(legendItem);
   
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
@@ -313,6 +324,7 @@ function enableSwipe(layer) {
     li = swatchFunction(colorramp[i]);
 	legendScale.append($(li));
   }
+ }
   
   legendItem.on("click", function(evt) {
 	var isVisible = layer.getVisible();
@@ -326,4 +338,4 @@ function enableSwipe(layer) {
       legendExp.toggleClass("plus");
       legendExp.toggleClass("minus"); 	  
   });
-} 
+ 
