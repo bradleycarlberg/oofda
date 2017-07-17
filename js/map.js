@@ -71,28 +71,28 @@ function addLayer(url, title, colorramp, styleFunction, swipe, promise, swatchFu
 
 //addToLegend
 function addToLegend(title, layer, colorramp, swatchFunction) {
-  var legendItem = $('<button class="visible"></button>');
+  var legendItem = $('<div class="legend-item"></div>');
   $('#legend').append(legendItem);
+
+  var legendButton = $('<button class="visible"></button>');
+  legendItem.append(legendButton);
   
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
-  legendItem.after(legendLabel);
+  legendItem.append(legendLabel);
   
   var legendCol = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
-  legendLabel.after(legendCol);
+  legendLabel.append(legendCol);
 
-  var legendScale = $('<ul id="' + title + '" class="legend-labels"></ul>');
-  legendCol.after(legendScale);
-  
-  var legendClose = $('<ul id="' + title + '" class="closed"></ul>');
-  legendScale.after(legendClose);
+  var legendScale = $('<ul id="' + title + '" class="legend-labels closed"></ul>');
+  legendCol.append(legendScale);
   
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
-	legendClose.append($(li));
+	legendScale.append($(li));
   }
   
  //eye to toggle layer on and off 
-  legendItem.on("click", function(evt) {
+  legendButton.on("click", function(evt) {
 	var isVisible = layer.getVisible();
     layer.setVisible(!isVisible);
 	$(evt.target).toggleClass("visible");
@@ -297,24 +297,24 @@ function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
 
 //AddTermsToLegend (equivalent to addToLegend)
 function addTermsToLegend(title, colorramp, swatchFunction) {
+  var legendItem = $('<div class="legend-item"></div>');
+  $('#legend').append(legendItem);
+
   var legendFAQ = $('<img src="../images/FAQ-icon-this.png" style="width:25px;height:25px;">');
-  $('#legend').append(legendFAQ);
+  legendItem.append(legendFAQ);
   
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
-  legendFAQ.after(legendLabel)
+  legendItem.append(legendLabel)
   
   var legendExp = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
-  legendLabel.after(legendExp)
+  legendItem.append(legendExp)
 
-  var legendScale2 = $('<ul class="legend-labels"></ul>');
-  legendExp.after(legendScale2);
+  var legendScale2 = $('<ul class="legend-labels closed"></ul>');
+  legendItem.append(legendScale2);
    
-  var legendClose2 = $('<ul id="' + title + '" class="closed"></ul>');
-  legendScale2.after(legendClose2);
-  
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
-	legendClose2.append($(li));
+	legendScale2.append($(li));
   }
 
  //plus minus to expand legend item
