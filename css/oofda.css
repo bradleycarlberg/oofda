@@ -24,12 +24,14 @@
     width: 50px;
 	}
 	
+#legend ul.closed {
+	display: none;
+	}	
 	
 #swipe {
 	width: 100%;
 }
   
-
 /*popup box*/	
 .popup {
 	visibility: hidden;
