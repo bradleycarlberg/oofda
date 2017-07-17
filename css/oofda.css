@@ -1,5 +1,6 @@
 #mapcontainer {
-	width: 75%;
+	width: 72;
+	height: 120%;
 	float: left;
 	margin: 0px;
 	padding: 0px;
@@ -12,25 +13,25 @@
     
     	
 #legend {
-	width: 25%;
+	width: 33%;
     height: 100%;
 	float: right;
+	margin: 0px;
+	padding: 0px;
 }
 
 #legend ul.legend-labels li span {
     display: block;
     float: left;
     height: 15px;
-    width: 50px;
+    width: 40px;
+	border-radius:5px;
 	}
 	
 /*#legend ul.closed {
 	display: none;
 	}*/	
 	
-#swipe {
-	width: 100%;
-}
   
 /*popup box*/	
 .popup {

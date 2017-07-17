@@ -77,18 +77,15 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
   legendItem.after(legendLabel);
   
-  var legendCol = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
+  var legendCol = $('<button class="minus"></button>' + '<span style="padding-right: 0px"></span>');
   legendLabel.after(legendCol);
 
   var legendScale = $('<ul id="' + title + '" class="legend-labels"></ul>');
   legendCol.after(legendScale);
   
-  var legendClose = $('<ul id="' + title + '" class="closed"></ul>');
-  legendScale.after(legendClose);
-  
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
-	legendClose.append($(li));
+	legendScale.append($(li));
   }
   
  //eye to toggle layer on and off 
@@ -257,29 +254,6 @@ function photopopup (event){
 	  return false;
     });
 }
-
-//swipe function
-/*function enableSwipe(layer) {
-  var swipe = document.getElementById('swipe');
-  
-  layer.on('precompose', function(event) {
-    var ctx = event.context;
-    var width = ctx.canvas.width * (swipe.value / 100);
-  
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
-    ctx.clip();
-  });
-  
-  layer.on('postcompose', function(event) {
-    var ctx = event.context;
-    ctx.restore();
-  });
-  
-  swipe.addEventListener('input', function() {
-    map.render();
-}, false);}*/
  
 //AddToTerms (addLayer equivalent)
 function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
@@ -303,18 +277,15 @@ function addTermsToLegend(title, colorramp, swatchFunction) {
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
   legendFAQ.after(legendLabel)
   
-  var legendExp = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
+  var legendExp = $('<button class="minus"></button>' + '<span style="padding-right: 0px"></span>');
   legendLabel.after(legendExp)
 
   var legendScale2 = $('<ul class="legend-labels"></ul>');
   legendExp.after(legendScale2);
-   
-  var legendClose2 = $('<ul id="' + title + '" class="closed"></ul>');
-  legendScale2.after(legendClose2);
   
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
-	legendClose2.append($(li));
+	legendScale2.append($(li));
   }
 
  //plus minus to expand legend item
