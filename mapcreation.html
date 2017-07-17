@@ -12,9 +12,11 @@
   <div id="mapcontainer">
     <div id="map" class="map"></div>
     </div>
+	
 	<div id="legend" class="legend">
 	  <h2>Legend:</h2>	     
 	</div>
+	
     <div id="photopopup" class="ol-popup">
       <a href="#" id="popup-closer" class="ol-popup-closer"></a>
       <div id="photopopup-content"></div>
@@ -56,9 +58,9 @@
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var likelyPromise = addLayer("Data/BRHighProb.json", "High Probability Flood Forecast",colorramp,
+	  var likelyPromise = addLayer("Data/HighProbs.json", "High Probability Flood Forecast",colorramp,
         categoricalStyle, undefined, areaPromise, areaSwatch, undefined);
-	  var worstPromise = addLayer("Data/BRWorstCase.json", "Worst Case Flood Forecast",colorramp,
+	  var worstPromise = addLayer("Data/WorstCase.json", "Worst Case Flood Forecast",colorramp,
         categoricalStyle, undefined, likelyPromise, areaSwatch, undefined);
 	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
 		color: '#00FF00',
