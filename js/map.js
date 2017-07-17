@@ -75,18 +75,22 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   $('#legend').append(legendItem);
   
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
-  legendItem.after(legendLabel)
+  legendItem.after(legendLabel);
   
-  var legendCol = $('<button class="minus"></button>' + '<span style="padding-right: 0px"></span>');
-  legendLabel.after(legendCol)
+  var legendCol = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
+  legendLabel.after(legendCol);
 
   var legendScale = $('<ul id="' + title + '" class="legend-labels"></ul>');
   legendCol.after(legendScale);
   
+  var legendClose = $('<ul id="' + title + '" class="closed"></ul>');
+  legendScale.after(legendClose);
+  
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
-	legendScale.append($(li));
+	legendClose.append($(li));
   }
+  
  //eye to toggle layer on and off 
   legendItem.on("click", function(evt) {
 	var isVisible = layer.getVisible();
@@ -97,8 +101,8 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
  //plus minus to collapse legend item
   legendCol.click(function () {
 	  legendScale.slideToggle();
-      legendCol.toggleClass("minus");
-      legendCol.toggleClass("plus"); 	  
+      legendCol.toggleClass("plus");
+      legendCol.toggleClass("minus"); 	  
   });
 }  
 
@@ -299,15 +303,18 @@ function addTermsToLegend(title, colorramp, swatchFunction) {
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
   legendFAQ.after(legendLabel)
   
-  var legendExp = $('<button class="minus"></button>' + '<span style="padding-right: 0px"></span>');
+  var legendExp = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
   legendLabel.after(legendExp)
 
   var legendScale2 = $('<ul class="legend-labels"></ul>');
   legendExp.after(legendScale2);
+   
+  var legendClose2 = $('<ul id="' + title + '" class="closed"></ul>');
+  legendScale2.after(legendClose2);
   
   for(var i = 0; i<colorramp.length;i++){
     li = swatchFunction(colorramp[i]);
-	legendScale2.append($(li));
+	legendClose2.append($(li));
   }
 
  //plus minus to expand legend item
