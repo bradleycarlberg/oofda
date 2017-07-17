@@ -7,8 +7,10 @@
 
 #map {
     width: 100%;
+	height: 120%;
     }
     
+    	
 #legend {
 	width: 25%;
     height: 100%;
