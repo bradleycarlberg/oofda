@@ -211,7 +211,7 @@ function pointSwatch(swatch) {
   var li = "";
   if (swatch.type && swatch.type == "FAQ") {
 	  li = $('<li/>');
-	  var img = $('<a href="#' + swatch.id + '"><img src="images/FAQ-icon.png" class="FAQ margin"/></a>');
+	  var img = $('<a href="#' + swatch.id + '"><img src="images/FAQ-icon-this.png" class="FAQ margin"/></a>');
 	  var closePopup = $('<a class="close" href="#">&times;</a>');
 	  var popup = $('<div id="' + swatch.id + '" class="popup">' + swatch.text + '</div>');
 	  $(li).append(img);
@@ -293,7 +293,7 @@ function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
 
 //AddTermsToLegend (equivalent to addToLegend)
 function addTermsToLegend(title, colorramp, swatchFunction) {
-  var legendFAQ = $('<img src="../images/FAQ-icon.png" style="width:25px;height:25px;">');
+  var legendFAQ = $('<img src="../images/FAQ-icon-this.png" style="width:25px;height:25px;">');
   $('#legend').append(legendFAQ);
   
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
