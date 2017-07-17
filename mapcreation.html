@@ -58,9 +58,9 @@
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var likelyPromise = addLayer("Data/City_File_for_example.json", "High Probability Flood Extent",colorramp,
+	  var likelyPromise = addLayer("Data/City_File_for_example.json", "High Probability Flood Forecast",colorramp,
         categoricalStyle, true, areaPromise, areaSwatch, undefined);
-	  var worstPromise = addLayer("Data/City_File_for_example.json", "Worst Case Flood Extent",colorramp,
+	  var worstPromise = addLayer("Data/City_File_for_example.json", "Worst Case Flood Forecast",colorramp,
         categoricalStyle, true, likelyPromise, areaSwatch, undefined);
 	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
 		color: '#00FF00',
