@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>oofda</title>
+    <link rel="stylesheet" href="css/ol-4.2.0.css" type="text/css">
+    <link rel="stylesheet" href="css/oofda.css" type="text/css">
+    <script src="js/ol-4.2.0.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/map.js"></script>
+  </head>
+  <body>
+  <div id="mapcontainer">
+    <div id="map" class="map"></div>
+	   <a href="https://www.accuweather.com/en/us/baton-rouge-la/70806/weather-forecast/329147" class="aw-widget-legal">
+		<!--
+		By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+		-->
+	   </a>
+	   <div id="awcc1500320359744" class="aw-widget-current"  data-locationkey="" data-unit="f" data-language="en-us" data-useip="true" data-uid="awcc1500320359744"></div>
+	   <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+    </div>
+	
+	<div id="legend" class="legend">
+	  <h2>Legend:</h2>	     
+	</div>
+	
+    <div id="photopopup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="photopopup-content"></div>
+    </div>
+		
+	
+    <script>
+      // FLOOD EVENT PARAMETERS
+      var centerLonLat = [-91.1403, 30.4583]; 
+      var initialZoom = 10;
+      var zoomExtent = [10, 17];
+	  var colorramp = [{
+	    color: '#F4F142',
+		label: ' Ankle to knee (0.4-1.5 ft)',
+		opacity: '1.0',
+	  }, {
+	    color: '#F4A642',
+		label: ' Knee to waist (1.5-3.3 ft)',
+		opacity: '1.0'
+	  }, {
+	    color: '#F44141',
+		label: ' Waist to head (3.3-5.5 ft)',
+		opacity: '1.0'	  
+	  }, {
+	    color: '#B841F4',
+	    label: ' Over head (>5.5 ft)',
+		opacity: '1.0'
+	  }]
+      // END PARAMETERS
+
+      initMap(centerLonLat, initialZoom, zoomExtent);
+	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
+	    color: "#0000FF",
+		label: 'Flooded Area',
+		opacity: 0.5
+	  }], historicalStyle, undefined, undefined, areaSwatch, undefined);
+      /*var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
+        color: '#000000',
+        label: 'High water',
+        opacity: 0.5
+      }], categoricalStyle, true, areaPromise, pointSwatch);*/
+	  var likelyPromise = addLayer("Data/Unpacked_high.json", "High Probability Flood Forecast",colorramp,
+        categoricalStyle, undefined, areaPromise, areaSwatch, undefined);
+	  var worstPromise = addLayer("Data/Unpacked_worst.json", "Worst Case Flood Forecast",colorramp,
+        categoricalStyle, undefined, likelyPromise, areaSwatch, undefined);
+	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
+		color: '#00FF00',
+		strokecolor: '#000000',
+		label: 'Photo Locations',
+		type:"point",
+		opacity: 0.9
+		}],
+		photoStyle, undefined, worstPromise, pointSwatch, photopopup);
+	  var termsPromise = addToTerms("Useful Flood Terms",[{
+		label: 'Flood Inundation Map',
+		type:"FAQ",
+		text:'A map that shows record, historic, forecasted, or current floodwater extent.This website shows a historic and two hypothetical forecast flood inundation maps.',
+		id:'PopupThing'
+		},{
+		label: 'Flood Stage',
+		type:"FAQ",
+		text:'Unique to each stream/river, it is the point at which the overflow of natural streambanks begins to cause damage in the surrounding area. ',
+		id:'PopupThing1'
+		},{
+		label: 'Flood Watch/Warning',
+		type:"FAQ",
+		text:'Watch is issued when conditions are favorable for flooding. It does not mean flooding will occur, but it is possible.Warning is issued when flooding is imminent or occurring.',
+		id:'PopupThing2'
+		},{
+		label: 'NWS',
+		type:"FAQ",
+		text:'National Weather Service',
+		id:'PopupThing3'
+		},{
+		label: 'Stage',
+		type:"FAQ",
+		text:'The height of the water at a specific gage site.',
+		id:'PopupThing4'
+		},{
+		label: 'USGS',
+		type:"FAQ",
+		text:'United States Geological Survey',
+		id:'PopupThing5'
+		},{
+		label: 'USGS Stream Gage',
+		type:"FAQ",
+		text:'A location which monitors and tests terrestrial bodies of water.',
+		id:'PopupThing6'
+		},{
+		label: 'What do these colors mean?',
+		type:"FAQ",
+		text:'Colors selected reflect the NWS defined flood action stages, increasing in severity: Near Flood Stage (yellow), Minor (orange), Moderate (red), and Major (purple).',
+		id:'PopupThing7'}],
+		categoricalStyle, pinkyPromise, pointSwatch);
+	  var linksPromise = addToTerms("Useful Links",[{
+		label: 'National Weather Service',
+		type:"FAQ",
+		text:'<a href="https://www.weather.gov/">National Weather  Service</a>',
+		id:'PopupThing8'
+		},{
+		label: 'AHPS Flood Mapper',
+		text:'<a href="https://water.weather.gov/ahps/">AHPS</a>',
+		type:"FAQ",
+		id:'PopupThing9'
+		},{
+		label: 'USGS Flood Inundation Mapper',
+		text:'<a href="http://wimcloud.usgs.gov/apps/FIM/FloodInundationMapper.html">USGS Flood Inundation Mapper</a>',
+		type:"FAQ",
+		id:'PopupThing10'
+		}],
+		categoricalStyle, termsPromise, pointSwatch);
+		</script>
+  </body>
+</html>
