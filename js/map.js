@@ -187,13 +187,13 @@ function photoStyle(feature, resolution) {
     styleCache["Photo"] = new ol.style.Style({
     image: new ol.style.Circle({
 	  fill: new ol.style.Fill({
-	    color: [255,0,0,0.5]
+	    color: [0,255,0,0.9]
 	  }),
 	  stroke: new ol.style.Stroke({
 		color: [0,0,0,1],
 	    width: 1
 	  }),
-	  radius: 3 
+	  radius: 6 
 	})
     });
   }
@@ -255,7 +255,7 @@ function photopopup (event){
 }
 
 //swipe function
-function enableSwipe(layer) {
+/*function enableSwipe(layer) {
   var swipe = document.getElementById('swipe');
   
   layer.on('precompose', function(event) {
@@ -275,20 +275,7 @@ function enableSwipe(layer) {
   
   swipe.addEventListener('input', function() {
     map.render();
-}, false);}
-
-  
- legendFAQ.click(function () {
-	  legendScale.slideToggle();
-      legendFAQ.toggleClass("FAQ");
-      legendFAQ.toggleClass("minus"); 
- });
- 
- legendExp.click(function () {
-	  legendScale2.slideToggle();
-      legendExp.toggleClass("plus");
-      legendExp.toggleClass("minus"); 	  
-  });
+}, false);}*/
  
 //AddToTerms (addLayer equivalent)
 function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
