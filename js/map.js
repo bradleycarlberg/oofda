@@ -273,7 +273,7 @@ function addTermsToLegend(title, colorramp, swatchFunction) {
   var legendItem = $('<div class="legend-item"></div>');
   $('#legend').append(legendItem);
 
-  var legendFAQ = $('<img src="/images/FAQ-icon-this.png" style="width:25px;height:25px;">');
+  var legendFAQ = $('<img src="images/FAQ-icon-this.png" style="width:25px;height:25px;">');
   legendItem.append(legendFAQ);
   
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
