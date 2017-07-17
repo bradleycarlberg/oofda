@@ -55,7 +55,7 @@
       // END PARAMETERS
 
       initMap(centerLonLat, initialZoom, zoomExtent);
-	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
+	  var areaPromise = addLayer2("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
 	    color: "#0000FF",
 		label: 'Flooded Area',
 		opacity: 0.5
@@ -65,7 +65,7 @@
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var likelyPromise = addLayer("Data/Simple_high.json", "High Probability Flood Forecast",colorramp,
+	  var likelyPromise = addLayer2("Data/Simple_high.json", "High Probability Flood Forecast",colorramp,
         categoricalStyle, undefined, areaPromise, areaSwatch, undefined);
 	  var worstPromise = addLayer("Data/Simple_worst.json", "Worst Case Flood Forecast",colorramp,
         categoricalStyle, undefined, likelyPromise, areaSwatch, undefined);
