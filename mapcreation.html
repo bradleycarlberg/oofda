@@ -11,7 +11,6 @@
   <body>
   <div id="mapcontainer">
     <div id="map" class="map"></div>
-    <input id="swipe" type="range" value="0" />
     </div>
 	<div id="legend" class="legend">
 	  <h2>Legend:</h2>	     
@@ -52,24 +51,24 @@
 	    color: "#0000FF",
 		label: 'Flooded Area',
 		opacity: 0.5
-	  }], historicalStyle, false, undefined, areaSwatch, undefined);
+	  }], historicalStyle, undefined, undefined, areaSwatch, undefined);
       /*var hwmPromise = addLayer("Data/HWM_BR_new.json", "High Water Marks", [{
         color: '#000000',
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
 	  var likelyPromise = addLayer("Data/City_File_for_example.json", "High Probability Flood Forecast",colorramp,
-        categoricalStyle, true, areaPromise, areaSwatch, undefined);
+        categoricalStyle, undefined, areaPromise, areaSwatch, undefined);
 	  var worstPromise = addLayer("Data/City_File_for_example.json", "Worst Case Flood Forecast",colorramp,
-        categoricalStyle, true, likelyPromise, areaSwatch, undefined);
+        categoricalStyle, undefined, likelyPromise, areaSwatch, undefined);
 	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
 		color: '#00FF00',
 		strokecolor: '#000000',
 		label: 'Photo Locations',
 		type:"point",
-		opacity: 0.9,
+		opacity: 0.9
 		}],
-		photoStyle, false, worstPromise, pointSwatch, photopopup);
+		photoStyle, undefined, worstPromise, pointSwatch, photopopup);
 	  var termsPromise = addToTerms("Useful Flood Terms",[{
 		label: 'Inundation Map',
 		type:"FAQ",
