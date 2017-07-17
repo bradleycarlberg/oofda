@@ -41,11 +41,20 @@
 	left: 0;
 	right: 0;
 	margin: 100px 30% auto 30%;
-	background: #aaaaaa;
+	background: #fff;
+	border: 1px solid #cccccc;
 	border-radius: 5px;
 	clear: both;
 	padding:15px;
 		
+}
+
+.popup .close {
+	text-decoration: none;
+	content: "✖";
+	position: absolute;
+    top: 2px;
+    right: 8px;
 }
 
 /*to show popup box*/		
