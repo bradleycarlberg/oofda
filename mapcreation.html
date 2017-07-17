@@ -70,41 +70,61 @@
 		}],
 		photoStyle, undefined, worstPromise, pointSwatch, photopopup);
 	  var termsPromise = addToTerms("Useful Flood Terms",[{
-		label: 'Inundation Map',
+		label: 'Flood Inundation Map',
 		type:"FAQ",
-		text:'Blah blah blah',
+		text:'A map that shows record, historic, forecasted, or current floodwater extent.This website shows a historic and two hypothetical forecast flood inundation maps.',
 		id:'PopupThing'
-		},{
-		label: 'USGS Gage',
-		type:"FAQ",
-		text:'Blah blah blah',
-		id:'PopupThing1'
-		},{
-		label: 'River Stage',
-		type:"FAQ",
-		text:'Blah blah blah blah',
-		id:'PopupThing2'
 		},{
 		label: 'Flood Stage',
 		type:"FAQ",
-		text:'Blah blah blah',
+		text:'Unique to each stream/river, it is the point at which the overflow of natural streambanks begins to cause damage in the surrounding area. ',
+		id:'PopupThing1'
+		},{
+		label: 'Flood Watch/Warning',
+		type:"FAQ",
+		text:'Watch is issued when conditions are favorable for flooding. It does not mean flooding will occur, but it is possible.Warning is issued when flooding is imminent or occurring.',
+		id:'PopupThing2'
+		},{
+		label: 'NWS',
+		type:"FAQ",
+		text:'National Weather Service',
 		id:'PopupThing3'
 		},{
-		label: 'Watch, Warning, Advisory',
+		label: 'Stage',
 		type:"FAQ",
-		text:'Blah blah blah',
-		id:'PopupThing4'}],
+		text:'The height of the water at a specific gage site.',
+		id:'PopupThing4'
+		},{
+		label: 'USGS',
+		type:"FAQ",
+		text:'United States Geological Survey',
+		id:'PopupThing5'
+		},{
+		label: 'USGS Stream Gage',
+		type:"FAQ",
+		text:'A location which monitors and tests terrestrial bodies of water.',
+		id:'PopupThing6'
+		},{
+		label: 'What do these colors mean?',
+		type:"FAQ",
+		text:'Colors selected reflect the NWS defined flood action stages, increasing in severity: Near Flood Stage (yellow), Minor (orange), Moderate (red), and Major (purple).',
+		id:'PopupThing7'}],
 		categoricalStyle, pinkyPromise, pointSwatch);
 	  var linksPromise = addToTerms("Useful Links",[{
 		label: 'National Weather Service',
 		type:"FAQ",
-		text:'<a href="https://www.google.com/">Google</a>',
-		id:'PopupThing5'
+		text:'<a href="https://www.weather.gov/">National Weather  Service</a>',
+		id:'PopupThing8'
 		},{
-		label: 'Department of Transportation',
+		label: 'AHPS Flood Mapper',
+		text:'<a href="https://water.weather.gov/ahps/">AHPS</a>',
 		type:"FAQ",
-		text:'Blah blah blah',
-		id:'PopupThing6'
+		id:'PopupThing9'
+		},{
+		label: 'USGS Flood Inundation Mapper',
+		text:'<a href="http://wimcloud.usgs.gov/apps/FIM/FloodInundationMapper.html">USGS Flood Inundation Mapper</a>',
+		type:"FAQ",
+		id:'PopupThing10'
 		}],
 		categoricalStyle, termsPromise, pointSwatch);
 		</script>
