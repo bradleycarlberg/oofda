@@ -220,7 +220,7 @@ function pointSwatch(swatch) {
 	  $(li).append(popup);
   } else {
     var svg = '<svg height="15" width="15" class="margin">' +
-		  '<circle cx="7" cy="7" r="4" stroke="' + swatch.strokecolor +
+		  '<circle cx="7" cy="7" r="6" stroke="' + swatch.strokecolor +
 		  '" stroke-width="1" fill="' + swatch.color +
 		  '" fill-opacity="' + swatch.opacity + '" /></svg>';
     li = '<li>' + svg + swatch.label + '</li>';
