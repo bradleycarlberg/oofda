@@ -29,16 +29,21 @@
       var zoomExtent = [10, 17];
 	  var colorramp = [{
 	    color: '#F4F142',
-		label: ' Ankle to knee (0.4-1.5 ft)'
+		label: ' Ankle to knee (0.4-1.5 ft)',
+		opacity: '0.7',
+		stroke: '5px'
 	  }, {
 	    color: '#F4A642',
-		label: ' Knee to waist (1.5-3.3 ft)'
+		label: ' Knee to waist (1.5-3.3 ft)',
+		opacity: '0.7'
 	  }, {
 	    color: '#F44141',
-		label: ' Waist to head (3.3-5.5 ft)'	  
+		label: ' Waist to head (3.3-5.5 ft)',
+		opacity: '0.7'	  
 	  }, {
 	    color: '#B841F4',
-	    label: ' Over head (>5.5 ft)'
+	    label: ' Over head (>5.5 ft)',
+		opacity: '0.7'
 	  }]
       // END PARAMETERS
 
@@ -74,35 +79,38 @@
 		label: 'USGS Gage',
 		type:"FAQ",
 		text:'Blah blah blah',
-		id:'PopupThing'
+		id:'PopupThing1'
 		},{
 		label: 'River Stage',
 		type:"FAQ",
 		text:'Blah blah blah blah',
-		id:'PopupThing'
+		id:'PopupThing2'
 		},{
 		label: 'Flood Stage',
 		type:"FAQ",
 		text:'Blah blah blah',
-		id:'PopupThing'
+		id:'PopupThing3'
 		},{
 		label: 'Watch, Warning, Advisory',
 		type:"FAQ",
 		text:'Blah blah blah',
-		id:'PopupThing'}],
+		id:'PopupThing4'}],
 		categoricalStyle, pinkyPromise, pointSwatch);
 	  var linksPromise = addToTerms("Useful Links",[{
 		label: 'National Weather Service',
 		type:"FAQ",
-		text:'Blah blah blah',
-		id:'PopupThing'
+		text:'<a href="https://www.google.com/">Google</a>',
+		id:'PopupThing5'
 		},{
 		label: 'Department of Transportation',
 		type:"FAQ",
 		text:'Blah blah blah',
-		id:'PopupThing'
+		id:'PopupThing6'
 		}],
 		categoricalStyle, termsPromise, pointSwatch);
-	</script>
+		/*$("#'August 2016 Floods'").hide();
+		$("#August 2016 Floods").hide();
+		$("#August 2016 Floods").hide();*/
+		</script>
   </body>
 </html>

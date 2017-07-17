@@ -80,7 +80,7 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendCol = $('<button class="minus"></button>' + '<span style="padding-right: 0px"></span>');
   legendLabel.after(legendCol)
 
-  var legendScale = $('<ul class="legend-labels"></ul>');
+  var legendScale = $('<ul id="' + title + '" class="legend-labels"></ul>');
   legendCol.after(legendScale);
   
   for(var i = 0; i<colorramp.length;i++){
@@ -102,7 +102,7 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   });
 }  
 
-// hmw style
+//hmw style
 var styleCache = {
   default: new ol.style.Style({
     fill: new ol.style.Fill({
@@ -166,16 +166,16 @@ function historicalStyle(feature, resolution) {
 	var color = [0,0,255,.5];
 	
 	var fillColor = color;
-	var strokeColor = color;
-	fillColor[3] = 0.5;
+	/*var strokeColor = [0,0,255,1];*/
+	fillColor[3] = .5;
     styleCache["historical"] = new ol.style.Style({
       fill: new ol.style.Fill({
         color: fillColor
       }),
-      stroke: new ol.style.Stroke({
+      /*stroke: new ol.style.Stroke({
 	    color: strokeColor,
-		width: 2
-	  })
+		width: 1
+	  })*/
     });
   }
   return [styleCache["historical"]];
@@ -202,7 +202,7 @@ function photoStyle(feature, resolution) {
 
 //used for inundation maps
 function areaSwatch(swatch) {
-  var li = '<li><span style="background:' + swatch.color + ';" class="margin"></span>' + swatch.label + '</li>';
+  var li = '<li><span style="background:' + swatch.color + '; opacity:' + swatch.opacity +'" class="margin"></span>' + swatch.label + '</li>';
   return li;
 }
 
@@ -228,7 +228,7 @@ function pointSwatch(swatch) {
   return li;
 }
 
-/* Create an overlay to anchor the popup to the map.*/
+//Create an overlay to anchor the popup to the map.
 function photopopup (event){
 	var feature = event.target.getFeatures().getArray()[0];
 	var coordinate = feature.getGeometry().getCoordinates();
@@ -276,6 +276,7 @@ function enableSwipe(layer) {
   swipe.addEventListener('input', function() {
     map.render();
 }, false);}
+<<<<<<< HEAD
   
  legendFAQ.click(function () {
 	  legendScale.slideToggle();
@@ -289,7 +290,7 @@ function enableSwipe(layer) {
       legendExp.toggleClass("minus"); 	  
   });
  
-//addToTerms (addLayer equivalent)
+//AddToTerms (addLayer equivalent)
 function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
   if (promise == undefined) {
 	promise = $.Deferred();
@@ -298,11 +299,12 @@ function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
   var myPromise = $.Deferred();
   $.when(promise).then(function() {
   	  addTermsToLegend(title, colorramp, swatchFunction);
+	  myPromise.resolve();
     });
   return myPromise;
 }
 
-//addTermsToLegend (equivalent to addToLegend)
+//AddTermsToLegend (equivalent to addToLegend)
 function addTermsToLegend(title, colorramp, swatchFunction) {
   var legendFAQ = $('<img src="../images/FAQ-icon.png" style="width:25px;height:25px;">');
   $('#legend').append(legendFAQ);
@@ -310,7 +312,7 @@ function addTermsToLegend(title, colorramp, swatchFunction) {
   var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
   legendFAQ.after(legendLabel)
   
-  var legendExp = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
+  var legendExp = $('<button class="minus"></button>' + '<span style="padding-right: 0px"></span>');
   legendLabel.after(legendExp)
 
   var legendScale2 = $('<ul class="legend-labels"></ul>');
@@ -320,11 +322,7 @@ function addTermsToLegend(title, colorramp, swatchFunction) {
     li = swatchFunction(colorramp[i]);
 	legendScale2.append($(li));
   }
-  
- //Question mark
- 
- 
- 
+
  //plus minus to expand legend item
   legendExp.click(function () {
 	  legendScale2.slideToggle();
