@@ -191,7 +191,7 @@ function photoStyle(feature, resolution) {
     styleCache["Photo"] = new ol.style.Style({
     image: new ol.style.Circle({
 	  fill: new ol.style.Fill({
-	    color: [0,255,0,0.9]
+	    color: [0,255,0,0.7]
 	  }),
 	  stroke: new ol.style.Stroke({
 		color: [0,0,0,1],

@@ -12,9 +12,11 @@
     
     	
 #legend {
-	width: 23%;
+	width: 27%;
     height: 100%;
 	float: right;
+	margin: 0px;
+	padding: 0px;
 }
 
 #legend ul.legend-labels li span {
@@ -25,7 +27,7 @@
 	border-radius:5px;
 	}
 	
-legend ul.closed {
+#legend ul.closed {
 	display: none;
 	}
 	
