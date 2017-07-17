@@ -11,11 +11,13 @@
   <body>
   <div id="mapcontainer">
     <div id="map" class="map"></div>
-	   <div id='wxology_wdgt_9'>
-	     <a class='wxology_xxx' href='http://weatherology.com/weather/forecast/local/LA/Baton Rouge.html'>Baton Rouge, LA weather</a>
-		 <script type='text/javascript' src='http://weatherology.com/widgets_v2/js/wdgt_9.js'></script>
-		 <script type='text/javascript'>var wx_city = 'Baton Rouge';var wx_state = 'LA';var wx_extra='';</script>
-	   </div>
+	   <a href="https://www.accuweather.com/en/us/baton-rouge-la/70806/weather-forecast/329147" class="aw-widget-legal">
+		<!--
+		By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+		-->
+	   </a>
+	   <div id="awcc1500320359744" class="aw-widget-current"  data-locationkey="" data-unit="f" data-language="en-us" data-useip="true" data-uid="awcc1500320359744"></div>
+	   <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
     </div>
 	
 	<div id="legend" class="legend">
@@ -63,9 +65,9 @@
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var likelyPromise = addLayer("Data/HighProbs.json", "High Probability Flood Forecast",colorramp,
+	  var likelyPromise = addLayer("Data/Simple_high.json", "High Probability Flood Forecast",colorramp,
         categoricalStyle, undefined, areaPromise, areaSwatch, undefined);
-	  var worstPromise = addLayer("Data/WorstCase.json", "Worst Case Flood Forecast",colorramp,
+	  var worstPromise = addLayer("Data/Simple_worst.json", "Worst Case Flood Forecast",colorramp,
         categoricalStyle, undefined, likelyPromise, areaSwatch, undefined);
 	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
 		color: '#00FF00',
