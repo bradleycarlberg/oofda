@@ -102,18 +102,6 @@ function addToLegend(title, layer, colorramp, swatchFunction) {
   });
 }  
 
-//not too sure what I was trying to do here
-/*function addLegendItem(title, colorramp, promise, swatchFunction){
-	var legendItem = $('<button class="FAQ"></button>');
-    $('#terms').append(legendItem);
-	
-	var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
-    legendItem.after(legendLabel)
-  
-	var legendScale = $('<ul class="legend-labels"></ul>');
-    legendLabel.after(legendScale);
-	}*/
-	
 // hmw style
 var styleCache = {
   default: new ol.style.Style({
@@ -240,20 +228,6 @@ function pointSwatch(swatch) {
   return li;
 }
 
-//don't think this is neccessary anymore
-/*function FAQSwatch(swatch) {
-  var li = "";
-  (swatch.type && swatch.type == "FAQ") {
-	  li = $('<li/>');
-	  var img = $('<a href="#' + swatch.id + '"><img src="images/FAQ-icon.png" class="FAQ margin"/></a>');
-	  var closePopup = $('<a class="close" href="#">&times;</a>');
-	  var popup = $('<div id="' + swatch.id + '" class="popup">' + swatch.text + '</div>');
-	  $(li).append(img);
-	  $(li).append(swatch.label);
-	  $(popup).append(closePopup);
-	  $(li).append(popup);
-}}*/
-
 /* Create an overlay to anchor the popup to the map.*/
 function photopopup (event){
 	var feature = event.target.getFeatures().getArray()[0];
@@ -302,38 +276,6 @@ function enableSwipe(layer) {
   swipe.addEventListener('input', function() {
     map.render();
 }, false);}
-
-//add terms and links to legend OLD
- /*function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
-  if (promise == undefined) {
-	promise = $.Deferred();
-	promise.resolve();
-  }
-  var myPromise = $.Deferred();
-  $.when(promise).then(function() {
-    $.get(title, function() { 
-      map.addToTerms(title);
-    });
-  });
-  return myPromise;
-  var legendFAQ= $('<button class="FAQ"></button>');
-  $('#legend').append(legendFAQ);
-  
-  var legendLabel = $('<span style="padding: 10px">' + title + '</span>');
-  legendFAQ.after(legendLabel)
-  
-  var legendExp = $('<button class="plus"></button>' + '<span style="padding-right: 0px"></span>');
-  legendLabel.after(legendExp)
-
-  var legendScale2 = $('<ul class="legend-labels"></ul>');
-  legendExp.after(legendScale2);
-  
-  for(var i = 0; i<colorramp.length;i++){
-    li = swatchFunction(colorramp[i]);
-	legendScale2.append($(li));
- }
- }*/
- 
   
  legendFAQ.click(function () {
 	  legendScale.slideToggle();
@@ -347,7 +289,7 @@ function enableSwipe(layer) {
       legendExp.toggleClass("minus"); 	  
   });
  
-//Test:addToTerms (addLayer equivalent)
+//addToTerms (addLayer equivalent)
 function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
   if (promise == undefined) {
 	promise = $.Deferred();
@@ -360,7 +302,7 @@ function addToTerms(title, colorramp, styleFunction, promise, swatchFunction) {
   return myPromise;
 }
 
-//Test:addTermsToLegend (equivalent to addToLegend)
+//addTermsToLegend (equivalent to addToLegend)
 function addTermsToLegend(title, colorramp, swatchFunction) {
   var legendFAQ = $('<img src="../images/FAQ-icon.png" style="width:25px;height:25px;">');
   $('#legend').append(legendFAQ);
