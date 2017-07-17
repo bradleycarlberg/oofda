@@ -127,7 +127,7 @@ var styleCache = {
 
 //City limit/probable forecast appearance
 function categoricalStyle(feature, resolution) {
-  var id = feature.get('CITY_LIMIT');
+  var id = feature.get('GRIDCODE');
   if (!id) {
     return [styleCache.default];
   }
