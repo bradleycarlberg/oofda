@@ -276,7 +276,7 @@ function enableSwipe(layer) {
   swipe.addEventListener('input', function() {
     map.render();
 }, false);}
-<<<<<<< HEAD
+
   
  legendFAQ.click(function () {
 	  legendScale.slideToggle();
