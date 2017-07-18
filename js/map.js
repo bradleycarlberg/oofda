@@ -68,7 +68,7 @@ function addLayer(url, title, colorramp, styleFunction, swipe, promise, swatchFu
   });
   return myPromise;
 }
-
+  
 //addToLegend
 function addToLegend(title, layer, colorramp, swatchFunction) {
   var legendItem = $('<div class="legend-item"></div>');
