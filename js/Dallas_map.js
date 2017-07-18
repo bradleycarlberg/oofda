@@ -236,15 +236,13 @@ function pointSwatch(swatch) {
 function photopopup (event){
 	var feature = event.target.getFeatures().getArray()[0];
 	var coordinate = feature.getGeometry().getCoordinates();
-	var photo = feature.get("Photo_Lo_1");
-	var water = feature.get("Where_is_w");
-	var gage = feature.get("Nearest__1");
-	var gagereading = feature.get("Gage_Readi");
+	var photo = feature.get("Photo");
+	var date = feature.get("ACQ_DATE");
+	var time = feature.get("ACQ_TIME");
 	var photoHtml = '<img src="' + photo + '" class = "popup-photo" />';
-	var waterHtml = '<p>Water depth: ' + water + '</p>';
-	var usgsHtml = '<p>Nearest USGS gage: ' + gage + '</p>';
-	var readingHtml = '<p>Gage reading at time of photo: ' + gagereading + ' ft </p>';
-	var html = photoHtml + waterHtml + usgsHtml + readingHtml;
+	var dateHtml = '<p>Date: ' + date + '</p>';
+	var timeHtml = '<p>Time: ' + time + '</p>';
+	var html = photoHtml + dateHtml + timeHtml;
 	$('#photopopup-content').html(html);
 	overlay.setPosition(coordinate);
   	$('#popup-closer').on('click', function() {
