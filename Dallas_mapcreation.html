@@ -55,7 +55,7 @@
       // END PARAMETERS
 
       initMap(centerLonLat, initialZoom, zoomExtent);
-	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "August 2016 Floods", [{
+	  var areaPromise = addLayer("Dallas_Data/BRFloodInundationArea.json", "August 2016 Floods", [{
 	    color: "#0000FF",
 		label: 'Flooded Area',
 		opacity: 0.5
@@ -65,11 +65,11 @@
         label: 'High water',
         opacity: 0.5
       }], categoricalStyle, true, areaPromise, pointSwatch);*/
-	  var likelyPromise = addLayer("Data/Unpacked_high.json", "High Probability Flood Forecast",colorramp,
+	  var likelyPromise = addLayer("Dallas_Data/Unpacked_high.json", "High Probability Flood Forecast",colorramp,
         categoricalStyle, undefined, areaPromise, areaSwatch, undefined);
-	  var worstPromise = addLayer("Data/Unpacked_worst.json", "Worst Case Flood Forecast",colorramp,
+	  var worstPromise = addLayer("Dallas_Data/Unpacked_worst.json", "Worst Case Flood Forecast",colorramp,
         categoricalStyle, undefined, likelyPromise, areaSwatch, undefined);
-	  var pinkyPromise = addLayer("Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
+	  var pinkyPromise = addLayer("Dallas_Data/BRPhotoLocationsFinal.json", "August 2016 Flood Photos",[{
 		color: '#00FF00',
 		strokecolor: '#000000',
 		label: 'Photo Locations',
