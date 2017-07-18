@@ -32,7 +32,7 @@
 	
     <script>
       // FLOOD EVENT PARAMETERS
-      var centerLonLat = [-96.7970, 32.7767]; 
+      var centerLonLat = [-96.900, 32.9000]; 
       var initialZoom = 10;
       var zoomExtent = [10, 17];
 	  var colorramp = [{
@@ -55,7 +55,7 @@
       // END PARAMETERS
 
       initMap(centerLonLat, initialZoom, zoomExtent);
-	  var areaPromise = addLayer("Data/BRFloodInundationArea.json", "May 2015 Floods", [{
+	  var areaPromise = addLayer("Dallas_Data/Dallas_Inundation.json", "May 2015 Floods", [{
 	    color: "#0000FF",
 		label: 'Flooded Area',
 		opacity: 0.5
